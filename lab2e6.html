@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 6 - Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+            $("#calculateButton").click(function () {
+
+                // Read values from the page
+                let firstValue = $("#number1").val();
+                let secondValue = $("#number2").val();
+                let operation = $("#operation").val();
+                let color = $("#resultColor").val();
+
+                // Clear old messages
+                $("#message").text("");
+                $("#result").text("");
+
+                // Check for empty fields
+                if (firstValue == "" || secondValue == "") {
+                    $("#message").text("Error: Please enter both numbers.");
+                    $("#message").css("color", "red");
+                    return;
+                }
+
+                // Convert input to numbers
+                let num1 = parseFloat(firstValue);
+                let num2 = parseFloat(secondValue);
+
+                // Check for valid numbers
+                if (isNaN(num1) || isNaN(num2)) {
+                    $("#message").text("Error: Please enter valid numbers.");
+                    $("#message").css("color", "red");
+                    return;
+                }
+
+                let answer;
+
+                // Perform calculation
+                if (operation == "+") {
+                    answer = num1 + num2;
+                }
+                else if (operation == "-") {
+                    answer = num1 - num2;
+                }
+                else if (operation == "*") {
+                    answer = num1 * num2;
+                }
+                else if (operation == "/") {
+
+                    // Prevent division by zero
+                    if (num2 == 0) {
+                        $("#message").text("Error: Cannot divide by zero.");
+                        $("#message").css("color", "red");
+                        return;
+                    }
+
+                    answer = num1 / num2;
+                }
+
+                // Use black if no color is entered
+                if (color == "") {
+                    color = "black";
+                }
+
+                // Display result
+                $("#result").text("Result: " + answer);
+
+                // Change result color
+                $("#result").css("color", color);
+
+            });
+
+        });
+    </script>
+
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+        }
+
+        #calculator {
+            width: 350px;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        input,
+        select,
+        button {
+            margin: 5px 0;
+            padding: 6px;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #message {
+            font-weight: bold;
+        }
+    </style>
+   
+  </head>
+  <body>
+    <header>
+      <h1>Lab 2 Exercise 6 - Calculator</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="lab2.html">Back</a></li>  
+        </ul>
+      </nav>
+    </header>
+
+     <div id="calculator">
+
+        <label for="number1">First Number:</label>
+        <br>
+        <input type="text" id="number1">
+
+        <br>
+
+        <label for="number2">Second Number:</label>
+        <br>
+        <input type="text" id="number2">
+
+        <br>
+
+        <label for="operation">Choose an Operation:</label>
+        <br>
+
+        <select id="operation">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (*)</option>
+            <option value="/">Division (/)</option>
+        </select>
+
+        <br>
+
+        <label for="resultColor">Result Color:</label>
+        <br>
+        <input type="text" id="resultColor" placeholder="Example: red, blue, green">
+
+        <br><br>
+
+        <button id="calculateButton">Calculate</button>
+
+        <p id="message"></p>
+
+        <p id="result"></p>
+
+    </div>
+    
+  </body>
+</html>
