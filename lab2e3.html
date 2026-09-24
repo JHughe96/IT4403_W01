@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 3</title>
+    <link rel="stylesheet" href="styles.css">
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            // Select by ID and change text
+            $("#changeHeading").click(function(){
+                $("#mainHeading").text("The Heading Has Been Changed");
+            });
+
+            // Select by class
+            $("#changeClass").click(function(){
+                $(".info").css("color", "blue");
+            });
+
+            // Select by element type
+            $("#changeParagraphs").click(function(){
+                $("p").css("font-size", "20px");
+            });
+
+            // Read text from an element
+            $("#readText").click(function(){
+                let text = $("#paragraph1").text();
+                $("#output").text("Text: " + text);
+            });
+
+            // Read HTML content
+            $("#readHTML").click(function(){
+                let content = $("#paragraph2").html();
+                $("#output").text("HTML: " + content);
+            });
+
+            // Change HTML content
+            $("#changeHTML").click(function(){
+                $("#paragraph2").html("<strong>This paragraph now has new HTML content.</strong>");
+            });
+
+            // Read an attribute
+            $("#readAttribute").click(function(){
+                let link = $("#myLink").attr("href");
+                $("#output").text("Link address: " + link);
+            });
+
+            // Change an attribute
+            $("#changeAttribute").click(function(){
+                $("#myLink").attr("href", "https://www.google.com");
+                $("#myLink").text("Go to Google");
+            });
+
+            // Hide
+            $("#hideButton").click(function(){
+                $("#paragraph1").hide();
+            });
+
+            // Show
+            $("#showButton").click(function(){
+                $("#paragraph1").show();
+            });
+
+            // Toggle
+            $("#toggleButton").click(function(){
+                $("#myList").toggle();
+            });
+
+            // CSS manipulation
+            $("#cssButton").click(function(){
+                $("#styleBox").css({
+                    "background-color": "lightgray",
+                    "color": "darkblue",
+                    "font-size": "22px",
+                    "border": "3px solid black",
+                    "width": "350px",
+                    "height": "100px"
+                });
+            });
+
+        });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Exercise 3 - jQuery Practice Exercise</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="lab2.html">Back</a></li>  
+        </ul>
+      </nav>
+    </header>
+
+    <p id="paragraph1" class="info">
+        This is the first paragraph.
+    </p>
+
+    <p id="paragraph2" class="info">
+        This is the <em>second paragraph</em>.
+    </p>
+
+    <p>
+        This is another paragraph used to demonstrate selecting elements
+        by element type.
+    </p>
+
+    <a id="myLink" href="https://www.w3schools.com">Visit W3Schools</a>
+
+    <h2>Sample List</h2>
+
+    <ul id="myList">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+
+    <div id="styleBox">
+        This box will be changed using jQuery CSS.
+    </div>
+
+    <br>
+
+    <button id="changeHeading">Change Heading</button>
+    <button id="changeClass">Change Class Color</button>
+    <button id="changeParagraphs">Change Paragraph Font Size</button>
+
+    <br><br>
+
+    <button id="readText">Read Text</button>
+    <button id="readHTML">Read HTML</button>
+    <button id="changeHTML">Change HTML</button>
+
+    <br><br>
+
+    <button id="readAttribute">Read Link Attribute</button>
+    <button id="changeAttribute">Change Link Attribute</button>
+
+    <br><br>
+
+    <button id="hideButton">Hide Paragraph</button>
+    <button id="showButton">Show Paragraph</button>
+    <button id="toggleButton">Toggle List</button>
+
+    <br><br>
+
+    <button id="cssButton">Change CSS</button>
+
+    <h3>Output</h3>
+    <p id="output">Results will appear here.</p>
+    <p> 
+    </p>
+
+
+</body>
+</html>
