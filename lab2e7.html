@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 7 - Picture</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+            // Store image information in an array
+            let pictures = [
+                {
+                    url: "images/picture1.jpg",
+                    caption: "Mountain View"
+                },
+                {
+                    url: "images/picture2.jpg",
+                    caption: "Ocean View"
+                },
+                {
+                    url: "images/picture3.jpg",
+                    caption: "Forest Trail"
+                },
+                {
+                    url: "images/picture4.jpg",
+                    caption: "City Skyline"
+                },
+                {
+                    url: "images/picture5.jpg",
+                    caption: "Sunset"
+                }
+            ];
+
+            let currentImage = 0;
+
+            // Function to display an image
+            function displayImage() {
+
+                $("#picture").fadeOut(300, function () {
+
+                    $("#picture").attr("src", pictures[currentImage].url);
+
+                    $("#caption").text(pictures[currentImage].caption);
+
+                    $("#counter").text(
+                        "Image " + (currentImage + 1) +
+                        " of " + pictures.length
+                    );
+
+                    $("#picture").fadeIn(300);
+
+                });
+            }
+
+            // Next button
+            $("#nextButton").click(function () {
+
+                currentImage++;
+
+                // Return to first image after the last image
+                if (currentImage >= pictures.length) {
+                    currentImage = 0;
+                }
+
+                displayImage();
+            });
+
+            // Previous button
+            $("#previousButton").click(function () {
+
+                currentImage--;
+
+                if (currentImage < 0) {
+                    currentImage = pictures.length - 1;
+                }
+
+                displayImage();
+            });
+
+            // Keyboard navigation
+            $(document).keydown(function (event) {
+
+                if (event.key == "ArrowRight") {
+                    $("#nextButton").click();
+                }
+
+                if (event.key == "ArrowLeft") {
+                    $("#previousButton").click();
+                }
+
+            });
+
+            // Error handling for a missing image
+            $("#picture").on("error", function () {
+                $("#caption").text("Error: Image could not be loaded.");
+            });
+
+            // Display the first image
+            displayImage();
+
+        });
+    </script>
+
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #browser {
+            width: 650px;
+            margin: auto;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        #picture {
+            width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border: 2px solid black;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #caption {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #counter {
+            font-size: 16px;
+        }
+    </style>
+   
+  </head>
+  <body>
+    <header>
+      <h1>Lab 2 Exercise 7 - Picture</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="lab2.html">Back</a></li>  
+        </ul>
+      </nav>
+    </header>
+
+    <div id="browser">
+
+        <img id="picture" src="" alt="Picture Browser Image">
+
+        <p id="caption"></p>
+
+        <p id="counter"></p>
+
+        <button id="previousButton">Previous</button>
+
+        <button id="nextButton">Next</button>
+
+        <p>
+            You can also use the left and right arrow keys
+            to move between pictures.
+        </p>
+
+    </div>
+    
+  </body>
+</html>
