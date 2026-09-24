@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 4</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            // Select and style odd data rows
+            $("#dataTable tbody tr:odd").css({
+                "background-color": "lightgray",
+                "font-style": "italic",
+                "border": "1px solid black"
+            });
+
+            // Hide odd rows
+            $("#hideOdd").click(function(){
+                $("#dataTable tbody tr:odd").hide();
+            });
+
+            // Restore all rows
+            $("#showRows").click(function(){
+                $("#dataTable tbody tr").show();
+            });
+
+            // Hide only the row that was clicked
+            $("#dataTable tbody tr").click(function(){
+                $(this).hide();
+            });
+
+        });
+    </script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: darkgray;
+        }
+    </style>
+   
+  </head>
+  <body>
+    <header>
+      <h1>Lab 2 Exercise 4</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="lab2.html">Back</a></li>  
+        </ul>
+      </nav>
+    </header>
+    
+    <button id="hideOdd">Hide Odd Rows</button>
+    <button id="showRows">Restore Rows</button>
+
+    <br><br>
+
+    <table id="dataTable">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Web Design</td>
+                <td>92</td>
+            </tr>
+
+            <tr>
+                <td>Sarah</td>
+                <td>Networking</td>
+                <td>88</td>
+            </tr>
+
+            <tr>
+                <td>Mike</td>
+                <td>Programming</td>
+                <td>95</td>
+            </tr>
+
+            <tr>
+                <td>Lisa</td>
+                <td>Cybersecurity</td>
+                <td>90</td>
+            </tr>
+
+            <tr>
+                <td>David</td>
+                <td>Database</td>
+                <td>85</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p>Click any row to hide that row.</p>
+
+    
+</body>
+</html>
