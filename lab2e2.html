@@ -46,7 +46,11 @@
     <button id="button1">Hide Paragraph 1</button>
     
     <button id="button2">Hide Paragraph 2</button>
-    
+
+    <p>Part C: 
+    Removing the wrapper did make it not work initially. This does depend on the location of the code too. If in the head part, the jQuery is trying to run before
+    the buttons are created. If it is in the body, those elements could be loaded in time for it to still work. This makes the wrapper useful because it makes sure 
+    the HTML page loads before the jQuery makes any changes. </p>
 
 </body>
 </html>
