@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 5 - jQuery Visual Effects</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Hide the content
+            $("#hideButton").click(function () {
+                $("#result").hide();
+            });
+
+            // Show the content
+            $("#showButton").click(function () {
+                $("#result").show();
+            });
+
+            // Toggle between hidden and visible
+            $("#toggleButton").click(function () {
+                $("#result").toggle();
+            });
+
+            // Fade the content
+            $("#fadeButton").click(function () {
+                $("#result").fadeToggle();
+            });
+
+            // Slide the content
+            $("#slideButton").click(function () {
+                $("#result").slideToggle();
+            });
+
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #result {
+            border: 2px solid black;
+            padding: 20px;
+            width: 400px;
+            margin-top: 20px;
+            background-color: lightgray;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-right: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Exercise 5: jQuery Visual Effects</h1>
+
+    <button id="hideButton">Hide</button>
+
+    <button id="showButton">Show</button>
+
+    <button id="toggleButton">Toggle</button>
+
+    <button id="fadeButton">Fade</button>
+
+    <button id="slideButton">Slide</button>
+
+    <div id="result">
+
+        <h2>jQuery Effects</h2>
+
+        <p>
+            jQuery makes it easy to create visual effects on a web page.
+            Use the buttons above to hide, show, toggle, fade, or slide
+            this section.
+        </p>
+
+    </div>
+
+</body>
+
+</html>
