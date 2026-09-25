@@ -5,6 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Exercise 6</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $.getJSON("movie.json", function (data) {
+
+                // Basic movie information
+                $("#title").text(data.title);
+                $("#year").text(data.year);
+                $("#rating").text(data.mpaa_rating);
+                $("#runtime").text(data.runtime + " minutes");
+                $("#studio").text(data.studio);
+
+                // Release dates
+                $("#theaterDate").text(data.release_dates.theater);
+                $("#dvdDate").text(data.release_dates.dvd);
+
+                // Ratings
+                $("#criticsRating").text(data.ratings.critics_rating);
+                $("#criticsScore").text(data.ratings.critics_score + "%");
+                $("#audienceRating").text(data.ratings.audience_rating);
+                $("#audienceScore").text(data.ratings.audience_score + "%");
+
+                // Synopsis
+                $("#synopsis").text(data.synopsis);
+
+                // Critics consensus
+                $("#consensus").text(data.critics_consensus);
+
+                // Director
+                $("#director").text(data.abridged_directors[0].name);
+
+                // Loop through genres
+                for (let i = 0; i < data.genres.length; i++) {
+                    $("#genreList").append(
+                        "<li>" + data.genres[i] + "</li>"
+                    );
+                }
+
+                // Loop through cast
+                for (let i = 0; i < data.abridged_cast.length; i++) {
+
+                    let actor = data.abridged_cast[i].name;
+                    let character = data.abridged_cast[i].characters[0];
+
+                    $("#castList").append(
+                        "<li>" +
+                        actor +
+                        " as " +
+                        character +
+                        "</li>"
+                    );
+                }
+
+            }).fail(function () {
+
+                $("#movieInfo").html(
+                    "<p>Error: Movie information could not be loaded.</p>"
+                );
+
+            });
+
+        });
+    </script>
+    
   </head>
   <body>
     <header>
@@ -19,7 +85,86 @@
 
     <main> <!-- main content section -->
       <h2>Exercise 6 </h2>
-      
+      <div id="movieInfo">
+
+        <h2 id="title"></h2>
+
+        <p>
+            <span class="label">Year:</span>
+            <span id="year"></span>
+        </p>
+
+        <p>
+            <span class="label">MPAA Rating:</span>
+            <span id="rating"></span>
+        </p>
+
+        <p>
+            <span class="label">Runtime:</span>
+            <span id="runtime"></span>
+        </p>
+
+        <p>
+            <span class="label">Studio:</span>
+            <span id="studio"></span>
+        </p>
+
+        <p>
+            <span class="label">Director:</span>
+            <span id="director"></span>
+        </p>
+
+        <h2>Release Information</h2>
+
+        <p>
+            <span class="label">Theater Release:</span>
+            <span id="theaterDate"></span>
+        </p>
+
+        <p>
+            <span class="label">DVD Release:</span>
+            <span id="dvdDate"></span>
+        </p>
+
+        <h2>Genres</h2>
+
+        <ul id="genreList"></ul>
+
+        <h2>Ratings</h2>
+
+        <p>
+            <span class="label">Critics Rating:</span>
+            <span id="criticsRating"></span>
+        </p>
+
+        <p>
+            <span class="label">Critics Score:</span>
+            <span id="criticsScore"></span>
+        </p>
+
+        <p>
+            <span class="label">Audience Rating:</span>
+            <span id="audienceRating"></span>
+        </p>
+
+        <p>
+            <span class="label">Audience Score:</span>
+            <span id="audienceScore"></span>
+        </p>
+
+        <h2>Critics Consensus</h2>
+
+        <p id="consensus"></p>
+
+        <h2>Synopsis</h2>
+
+        <p id="synopsis"></p>
+
+        <h2>Cast</h2>
+
+        <ul id="castList"></ul>
+
+    </div>
     </main>
 
     <footer> <!-- footer section to include course info -->
