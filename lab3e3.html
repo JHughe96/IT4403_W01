@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise3</title>
+    <link rel="stylesheet" href="styles.css">
+
+     $(document).ready(function () {
+
+            // JavaScript object containing the book data
+            let bookData = {
+                "books": [
+                    {
+                        "title": "Web Development Basics",
+                        "author": "Maya Lee",
+                        "price": 29.99
+                    },
+                    {
+                        "title": "Modern JavaScript",
+                        "author": "Daniel Kim",
+                        "price": 34.50
+                    },
+                    {
+                        "title": "Understanding JSON",
+                        "author": "Sofia Patel",
+                        "price": 24.95
+                    }
+                ]
+            };
+
+            // Display information about the first book
+            $("#firstTitle").text(bookData.books[0].title);
+            $("#firstAuthor").text(bookData.books[0].author);
+            $("#firstPrice").text("$" + bookData.books[0].price.toFixed(2));
+
+            // Display total number of books
+            $("#bookCount").text(bookData.books.length);
+
+            // Loop through all books
+            for (let i = 0; i < bookData.books.length; i++) {
+
+                $("#bookList").append(
+                    "<li>" +
+                    bookData.books[i].title +
+                    " by " +
+                    bookData.books[i].author +
+                    "</li>"
+                );
+            }
+
+        });
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Lab 3 - Exercise 3</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Exercise 3 </h2>
+
+       <h2>First Book</h2>
+
+    <p>
+        Title:
+        <span id="firstTitle"></span>
+    </p>
+
+    <p>
+        Author:
+        <span id="firstAuthor"></span>
+    </p>
+
+    <p>
+        Price:
+        <span id="firstPrice"></span>
+    </p>
+
+    <h2>All Books</h2>
+
+    <ul id="bookList"></ul>
+
+    <h2>Total Number of Books</h2>
+
+    <p>
+        Total books:
+        <span id="bookCount"></span>
+    </p>
+
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
