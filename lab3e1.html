@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 1</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Lab 3 - Exercise 1</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Exercise 1 </h2>
+      <h2>Main Structure</h2>
+
+    <p>
+        The Open Library JSON data is organized as one main JSON object.
+        Inside the object are many key/value pairs that describe the book
+        Fantastic Mr. Fox.
+    </p>
+
+    <h2>Main Keys</h2>
+
+    <p>
+        Some of the main keys include title, authors, publish_date,
+        publishers, covers, languages, number_of_pages, isbn_10,
+        isbn_13, and first_sentence.
+    </p>
+
+    <h2>Simple Values</h2>
+
+    <p>
+        Some values are simple text or numbers. For example, the title
+        is stored as text and the number of pages is stored as a number.
+    </p>
+
+    <div class="example">
+        <strong>Name/Value Pair:</strong>
+        <br><br>
+        <code>"title": "Fantastic Mr. Fox"</code>
+    </div>
+
+    <div class="example">
+        <strong>Number Value:</strong>
+        <br><br>
+        <code>"number_of_pages": 96</code>
+    </div>
+
+    <h2>Objects</h2>
+
+    <p>
+        Some values contain another object. An object contains its own
+        set of key/value pairs.
+    </p>
+
+    <div class="example">
+        <strong>Object Example:</strong>
+        <br><br>
+        <code>
+            "type": {<br>
+            &nbsp;&nbsp;"key": "/type/edition"<br>
+            }
+        </code>
+    </div>
+
+    <h2>Arrays</h2>
+
+    <p>
+        Arrays are used when a key can contain more than one value.
+        For example, the covers key contains several cover identification
+        numbers.
+    </p>
+
+    <div class="example">
+        <strong>Array Example:</strong>
+        <br><br>
+        <code>"covers": [15152634, 8739161, -1]</code>
+    </div>
+
+    <h2>Nested Structures</h2>
+
+    <p>
+        The JSON also contains nested structures. This means that an
+        array can contain objects, or an object can contain other
+        key/value pairs.
+    </p>
+
+    <div class="example">
+        <strong>Nested Array and Object:</strong>
+        <br><br>
+
+        <code>
+            "authors": [<br>
+            &nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"key": "/authors/OL34184A"<br>
+            &nbsp;&nbsp;}<br>
+            ]
+        </code>
+    </div>
+
+    <h2>Another Nested Object</h2>
+
+    <div class="example">
+        <code>
+            "first_sentence": {<br>
+            &nbsp;&nbsp;"type": "/type/text",<br>
+            &nbsp;&nbsp;"value": "Down in the valley there were three farms."<br>
+            }
+        </code>
+    </div>
+
+    <h2>Overall Organization</h2>
+
+    <p>
+        Overall, the JSON is organized like a record for a book.
+        The main object contains information about the book, such as
+        its title, publication date, authors, ISBN numbers, page count,
+        and other identifying information. Arrays are used when there
+        can be several values, while nested objects are used when a
+        value needs additional information.
+    </p>
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
