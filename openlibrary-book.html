@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open Library Book</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $.getJSON("openlibrary-book.json", function (data) {
+
+                // Basic information
+                $("#title").text(data.title);
+                $("#publishDate").text(data.publish_date);
+                $("#pages").text(data.number_of_pages);
+
+                // Publishers
+                if (data.publishers) {
+                    $("#publishers").text(data.publishers.join(", "));
+                }
+
+                // ISBN-10 numbers
+                if (data.isbn_10) {
+                    $("#isbn10").text(data.isbn_10.join(", "));
+                }
+
+                // ISBN-13 numbers
+                if (data.isbn_13) {
+                    $("#isbn13").text(data.isbn_13.join(", "));
+                }
+
+                // Contributors
+                if (data.contributions) {
+                    $("#contributors").text(data.contributions.join(", "));
+                }
+
+                // First sentence
+                if (data.first_sentence) {
+                    $("#firstSentence").text(data.first_sentence.value);
+                }
+
+                // Author references
+                if (data.authors) {
+                    for (let i = 0; i < data.authors.length; i++) {
+                        $("#authors").append(
+                            "<li>" + data.authors[i].key + "</li>"
+                        );
+                    }
+                }
+
+                // Languages
+                if (data.languages) {
+                    for (let i = 0; i < data.languages.length; i++) {
+                        $("#languages").append(
+                            "<li>" + data.languages[i].key + "</li>"
+                        );
+                    }
+                }
+
+                // Cover
+                if (data.covers && data.covers.length > 0) {
+
+                    let coverURL =
+                        "https://covers.openlibrary.org/b/id/" +
+                        data.covers[0] +
+                        "-M.jpg";
+
+                    $("#cover").attr("src", coverURL);
+                }
+
+            }).fail(function () {
+
+                $("#bookInfo").html(
+                    "<p>Error: Book information could not be loaded.</p>"
+                );
+
+            });
+
+        });
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Milestone 1 - Open Library Book</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="milestones.html">Milestones</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Milestone 1 - Open Library Book </h2>
+      <div id="bookInfo">
+
+        <h2 id="title"></h2>
+
+        <img id="cover" src="" alt="Book Cover">
+
+        <p>
+            <span class="label">Publication Date:</span>
+            <span id="publishDate"></span>
+        </p>
+
+        <p>
+            <span class="label">Publisher:</span>
+            <span id="publishers"></span>
+        </p>
+
+        <p>
+            <span class="label">Number of Pages:</span>
+            <span id="pages"></span>
+        </p>
+
+        <p>
+            <span class="label">ISBN-10:</span>
+            <span id="isbn10"></span>
+        </p>
+
+        <p>
+            <span class="label">ISBN-13:</span>
+            <span id="isbn13"></span>
+        </p>
+
+        <p>
+            <span class="label">Contributors:</span>
+            <span id="contributors"></span>
+        </p>
+
+        <p>
+            <span class="label">First Sentence:</span>
+            <span id="firstSentence"></span>
+        </p>
+
+        <h3>Author References</h3>
+        <ul id="authors"></ul>
+
+        <h3>Languages</h3>
+        <ul id="languages"></ul>
+
+    </div>
+      
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
