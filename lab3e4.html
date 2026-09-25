@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 4</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Student object with nested course data
+            let student = {
+                "name": "Jordan Smith",
+                "major": "Information Technology",
+                "email": "jsmith@example.com",
+
+                "courses": [
+                    {
+                        "code": "IT 101",
+                        "title": "Introduction to Information Technology",
+                        "creditHours": 3
+                    },
+                    {
+                        "code": "WEB 210",
+                        "title": "Web Development",
+                        "creditHours": 3
+                    },
+                    {
+                        "code": "SEC 220",
+                        "title": "Cybersecurity Fundamentals",
+                        "creditHours": 4
+                    }
+                ]
+            };
+
+            // Display student information
+            $("#studentName").text(student.name);
+            $("#studentMajor").text(student.major);
+            $("#studentEmail").text(student.email);
+
+            // Loop through courses
+            for (let i = 0; i < student.courses.length; i++) {
+
+                $("#courseList").append(
+                    "<li>" +
+                    "<strong>Course Code:</strong> " +
+                    student.courses[i].code +
+                    "<br>" +
+
+                    "<strong>Course Title:</strong> " +
+                    student.courses[i].title +
+                    "<br>" +
+
+                    "<strong>Credit Hours:</strong> " +
+                    student.courses[i].creditHours +
+                    "</li><br>"
+                );
+            }
+
+        });
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Lab 3 - Exercise 4</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Exercise 4 </h2>
+
+      <h2>Student Information</h2>
+
+    <p>
+        Name:
+        <span id="studentName"></span>
+    </p>
+
+    <p>
+        Major:
+        <span id="studentMajor"></span>
+    </p>
+
+    <p>
+        Email:
+        <span id="studentEmail"></span>
+    </p>
+
+    <h2>Courses</h2>
+
+    <ul id="courseList"></ul>
+
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
