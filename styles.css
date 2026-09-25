@@ -195,3 +195,10 @@ input[type="text"], select {
   font-size: small;
   color:#334155
 }
+
+pre {
+  background-color: lightgray;
+  border: 1px solid black;
+  padding: 15px;
+  width: fit-content;
+}
