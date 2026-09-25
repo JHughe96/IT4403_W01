@@ -202,3 +202,14 @@ pre {
   padding: 15px;
   width: fit-content;
 }
+
+#weatherInfo {
+  width: 400px;
+  border: 2px solid black;
+  padding: 20px;
+  background-color: lightgray;
+}
+
+.label {
+  font-weight: bold;
+}
