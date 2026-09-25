@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 1</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Lab 3 - Exercise 1</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Exercise 1 </h2>
+       <h2>Part A: Message JSON</h2>
+
+    <p>
+        The message information can be represented as one JSON object
+        containing name/value pairs.
+    </p>
+
+    <pre>
+{
+  "to": "Alex",
+  "from": "Jordan",
+  "heading": "Reminder",
+  "body": "Don't forget our meeting tomorrow."
+}
+    </pre>
+
+    <h2>Part B: Book Collection JSON</h2>
+
+    <p>
+        The books can be stored in an array. Each item in the array
+        is a separate book object.
+    </p>
+
+    <pre>
+{
+  "books": [
+    {
+      "title": "Web Development Basics",
+      "author": "Maya Lee",
+      "price": 29.99
+    },
+    {
+      "title": "Modern JavaScript",
+      "author": "Daniel Kim",
+      "price": 34.50
+    },
+    {
+      "title": "Understanding JSON",
+      "author": "Sofia Patel",
+      "price": 24.95
+    }
+  ]
+}
+    </pre>
+
+    <h2>Validation</h2>
+
+    <p>
+        I checked the JSON structure to make sure the property names and
+        text values use double quotation marks, commas are placed correctly,
+        and the objects and arrays are properly opened and closed.
+    </p>
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
