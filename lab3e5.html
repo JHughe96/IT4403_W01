@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $.getJSON("weather.json", function (data) {
+
+                // Display location
+                $("#location").text(data.name + ", " + data.sys.country);
+
+                // Temperature is stored in Kelvin
+                $("#temperature").text(data.main.temp + " K");
+
+                // Weather condition
+                $("#condition").text(data.weather[0].description);
+
+                // Humidity
+                $("#humidity").text(data.main.humidity + "%");
+
+                // Wind information
+                $("#windSpeed").text(data.wind.speed + " m/s");
+                $("#windDirection").text(data.wind.deg + " degrees");
+
+                // Pressure
+                $("#pressure").text(data.main.pressure + " hPa");
+
+                // Cloud coverage
+                $("#clouds").text(data.clouds.all + "%");
+
+            }).fail(function () {
+
+                $("#weatherInfo").html(
+                    "<p>Error: The weather data could not be loaded.</p>"
+                );
+
+            });
+
+        });
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Lab 3 - Exercise 5</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Exercise 5 </h2>
+       <div id="weatherInfo">
+
+        <p>
+            <span class="label">Location:</span>
+            <span id="location"></span>
+        </p>
+
+        <p>
+            <span class="label">Temperature:</span>
+            <span id="temperature"></span>
+        </p>
+
+        <p>
+            <span class="label">Weather Condition:</span>
+            <span id="condition"></span>
+        </p>
+
+        <p>
+            <span class="label">Humidity:</span>
+            <span id="humidity"></span>
+        </p>
+
+        <p>
+            <span class="label">Wind Speed:</span>
+            <span id="windSpeed"></span>
+        </p>
+
+        <p>
+            <span class="label">Wind Direction:</span>
+            <span id="windDirection"></span>
+        </p>
+
+        <p>
+            <span class="label">Pressure:</span>
+            <span id="pressure"></span>
+        </p>
+
+        <p>
+            <span class="label">Cloud Coverage:</span>
+            <span id="clouds"></span>
+        </p>
+
+    </div>
+
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
