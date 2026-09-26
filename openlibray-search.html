@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open Library Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+     <script>
+        $(document).ready(function () {
+
+            $.getJSON("openlibrary-search.json", function (data) {
+
+                $("#query").text(data.q);
+                $("#totalFound").text(data.numFound);
+
+                // Loop through every book in the docs array
+                for (let i = 0; i < data.docs.length; i++) {
+
+                    let book = data.docs[i];
+
+                    let title = book.title || "Title not available";
+
+                    let authors = "Author not available";
+
+                    if (book.author_name) {
+                        authors = book.author_name.join(", ");
+                    }
+
+                    let year = "Year not available";
+
+                    if (book.first_publish_year) {
+                        year = book.first_publish_year;
+                    }
+
+                    let languages = "Language not available";
+
+                    if (book.language) {
+                        languages = book.language.join(", ");
+                    }
+
+                    let cover = "";
+
+                    if (book.cover_i) {
+                        cover =
+                            "<img src='https://covers.openlibrary.org/b/id/" +
+                            book.cover_i +
+                            "-M.jpg' alt='Book Cover'>";
+                    }
+
+                    let bookHTML =
+                        "<div class='book'>" +
+                        "<h2>" + title + "</h2>" +
+                        cover +
+                        "<p><span class='label'>Author:</span> " +
+                        authors + "</p>" +
+                        "<p><span class='label'>First Published:</span> " +
+                        year + "</p>" +
+                        "<p><span class='label'>Edition Count:</span> " +
+                        book.edition_count + "</p>" +
+                        "<p><span class='label'>Languages:</span> " +
+                        languages + "</p>" +
+                        "</div>";
+
+                    $("#results").append(bookHTML);
+                }
+
+            }).fail(function () {
+
+                $("#results").html(
+                    "<p>Error: Search results could not be loaded.</p>"
+                );
+
+            });
+
+        });
+    </script>
+    
+  </head>
+  <body>
+    <header>
+      <h1>Milestone 1 - Open Library Search</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="milestones.html">Milestones</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h2>Milestone 1 - Open Library Search </h2>
+      
+      <div id="searchInfo">
+
+        <p>
+            <span class="label">Search Phrase:</span>
+            <span id="query"></span>
+        </p>
+
+        <p>
+            <span class="label">Total Results Found:</span>
+            <span id="totalFound"></span>
+        </p>
+
+    </div>
+
+    <div id="results"></div>
+
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
