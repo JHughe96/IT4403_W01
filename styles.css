@@ -220,3 +220,35 @@ pre {
   padding: 20px;
   background-color: lightgray;
 }
+
+#bookInfo {
+  width: 650px;
+  background-color: white;
+  border: 1px solid #999;
+  padding: 25px;
+  margin: auto;
+  }
+.label {
+  font-weight: bold;
+  }
+
+#cover {
+  max-width: 200px;
+  }
+
+#searchInfo {
+  text-align: center;
+  margin-bottom: 25px;
+  }
+
+.book {
+  background-color: white;
+  border: 1px solid #999;
+  padding: 20px;
+  margin: 15px auto;
+  width: 650px;
+  }
+
+.book img {
+  max-width: 120px;
+  }
