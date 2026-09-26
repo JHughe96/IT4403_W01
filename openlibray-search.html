@@ -10,7 +10,7 @@
      <script>
         $(document).ready(function () {
 
-            $.getJSON("openlibrary-search.json", function (data) {
+            $.getJSON("https://openlibrary.org/search.json?q=modern%20web&limit=10", function (data) {
 
                 $("#query").text(data.q);
                 $("#totalFound").text(data.numFound);
