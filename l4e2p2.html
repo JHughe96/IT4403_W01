@@ -36,7 +36,7 @@
 
 
         // Retrieve information about the selected album
-        fetch("https://jsonplaceholder.typicode.com/albums/" + albumId)
+        fetch("https://jsonplaceholder.typicode.com/albums?userId=1" + albumId)
             .then(response => response.json())
             .then(data => {
 
@@ -60,7 +60,7 @@
 
 
         // Retrieve all photos for the selected album
-        fetch("https://jsonplaceholder.typicode.com/photos?albumId=" + albumId)
+        fetch("https://jsonplaceholder.typicode.com/photos?albumId=1" + albumId)
             .then(response => response.json())
             .then(data => {
 
