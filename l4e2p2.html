@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 2</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Lab 4 - Exercise 2</h1>
+      <nav> <!--navigation menu-->
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="labs.html">Labs</a></li>
+          <li><a href="lab4.html">Back</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- main content section -->
+      <h1>Album Information</h1>
+
+    <div id="albumInfo"></div>
+
+    <h2>Photos</h2>
+
+    <div id="photoList"></div>
+
+    <script>
+
+        // Get the album ID from the URL
+        let parameters = new URLSearchParams(window.location.search);
+
+        let albumId = parameters.get("albumId");
+
+
+        // Retrieve information about the selected album
+        fetch("https://jsonplaceholder.typicode.com/albums/" + albumId)
+            .then(response => response.json())
+            .then(data => {
+
+                document.getElementById("albumInfo").innerHTML =
+                    "<p><strong>Album Title:</strong> " +
+                    data.title +
+                    "</p>" +
+
+                    "<p><strong>Album ID:</strong> " +
+                    data.id +
+                    "</p>" +
+
+                    "<p><strong>User ID:</strong> " +
+                    data.userId +
+                    "</p>";
+
+            })
+            .catch(error => {
+                console.log("Error:", error);
+            });
+
+
+        // Retrieve all photos for the selected album
+        fetch("https://jsonplaceholder.typicode.com/photos?albumId=" + albumId)
+            .then(response => response.json())
+            .then(data => {
+
+                let output = "";
+
+                // Loop through the photos
+                for (let i = 0; i < data.length; i++) {
+
+                    output +=
+                        "<div>" +
+
+                        "<p><strong>" +
+                        data[i].title +
+                        "</strong></p>" +
+
+                        "<img src='" +
+                        data[i].thumbnailUrl +
+                        "' alt='" +
+                        data[i].title +
+                        "'>" +
+
+                        "</div>";
+                }
+
+                document.getElementById("photoList").innerHTML = output;
+
+            })
+            .catch(error => {
+                console.log("Error:", error);
+            });
+
+    </script>
+
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+  </body>
+</html>
