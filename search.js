@@ -142,7 +142,7 @@ $(document).ready(function () {
             }
 
             const titleLink = $("<a>", {
-                href: "details.html?id=" + encodeURIComponent(workId),
+                href: "bookdetails.html?id=" + encodeURIComponent(workId),
                 text: title
             });
 
