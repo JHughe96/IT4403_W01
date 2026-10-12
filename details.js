@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     if (!workId) {
         showMessage(
-            "No Work ID was provided. Return to Home and select a book.",
+            "No Work ID was provided. Return to Book Search and select a book.",
             true
         );
         return;
