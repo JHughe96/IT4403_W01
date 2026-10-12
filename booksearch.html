@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open Library Book Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/search.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Open Library Explorer</h1>
+            <nav>
+                <a href="index.html" class="active">Home</a>
+                <a href="bookshelf.html">My Bookshelf</a>
+            </nav>
+        </div>
+    </header>
+
+    <main> 
+	<h2>Milestone 2 Sections:</h2>
+        <li><a href="bookdetails.html">2. Book Details Page</a></li>
+        <li><a href="bookshelf.html">3. My Bookshelf Page</a></li>
+	<li><a href="milestone2.html">1. Back</a></li>
+        <br>
+
+	class="container"
+        <section class="search-section">
+            <h2>Book Search</h2>
+            <p>Search Open Library by title, author, subject, or keyword.</p>
+
+            <form id="searchForm">
+                <label for="searchInput">Search for books:</label>
+                <div class="search-controls">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        name="search"
+                        placeholder="Example: data analysis"
+                    >
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+            <div id="message" class="message" aria-live="polite"></div>
+
+            <div id="paginationTop" class="pagination hidden">
+                <label for="pageSelectTop">Page:</label>
+                <select id="pageSelectTop"></select>
+                <span id="resultSummary"></span>
+            </div>
+
+            <div id="results" class="book-grid"></div>
+
+            <div id="paginationBottom" class="pagination hidden">
+                <label for="pageSelectBottom">Page:</label>
+                <select id="pageSelectBottom"></select>
+            </div>
+        </section>
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+</body>
+</html>
