@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/details.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Open Library Explorer</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="bookshelf.html">My Bookshelf</a>
+            </nav>
+        </div>
+    </header>
+
+    <main> 
+	    <h2>Milestone 2 Sections:</h2>
+        <li><a href="booksearch.html">2. Book Search Page</a></li>
+        <li><a href="bookshelf.html">3. My Bookshelf Page</a></li>
+	      <li><a href="milestone2.html">1. Back</a></li>
+        <br>
+
+	class="container"
+        <section>
+            <h2>Book Details</h2>
+
+            <div id="message" class="message" aria-live="polite"></div>
+
+            <div id="bookDetails" class="details-card hidden">
+                <div class="details-cover">
+                    <div id="coverArea"></div>
+                </div>
+
+                <div class="details-content">
+                    <h3 id="bookTitle"></h3>
+
+                    <p>
+                        <strong>Work ID:</strong>
+                        <span id="workId"></span>
+                    </p>
+
+                    <div class="details-section">
+                        <h4>Description</h4>
+                        <p id="description"></p>
+                    </div>
+
+                    <div class="details-section">
+                        <h4>Subjects</h4>
+                        <ul id="subjects"></ul>
+                    </div>
+
+                    <p>
+                        <a id="openLibraryLink"
+                           class="button-link"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                           View on Open Library
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer> <!-- footer section to include course info -->
+      <p>IT4403 Fall 2026 - J. Hughes</p>
+      <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+      <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+    </footer>
+</body>
+</html>
