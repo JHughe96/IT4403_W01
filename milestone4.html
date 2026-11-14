@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Milestone 4 - Improved Open Library SPA</title>
+
+    <!-- Existing course stylesheet. Milestone 3 remains unchanged. -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Milestone 4 specific stylesheet -->
+    <link rel="stylesheet" href="milestone4.css">
+
+    <!-- Only approved libraries -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+
+    <!-- Milestone 4 JavaScript files -->
+    <script src="m4-state.js" defer></script>
+    <script src="m4-search.js" defer></script>
+    <script src="m4-pagination.js" defer></script>
+    <script src="m4-layout.js" defer></script>
+    <script src="m4-details.js" defer></script>
+    <script src="m4-collection.js" defer></script>
+</head>
+
+<body>
+<header>
+    <div class="container">
+        <h1>Open Library Explorer</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="milestones.html">Milestones</a></li>
+                <li><a href="milestone3.html">Milestone 3</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="m4-main">
+    <section class="m4-hero">
+        <div>
+            <p class="m4-eyebrow">IT 4403 • Milestone 4</p>
+            <h2>Improved Open Library Single Page Application</h2>
+            <p>
+                Search for books, switch between grid and list layouts,
+                browse a public collection, and view full book details
+                without leaving this page.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search input -->
+    <section class="m4-panel" id="searchSection">
+        <div class="m4-section-heading">
+            <div>
+                <h2>Book Search</h2>
+                <p>Search Open Library by title or keyword.</p>
+            </div>
+        </div>
+
+        <form id="searchForm">
+            <label for="searchInput">Search for books:</label>
+
+            <div class="m4-search-controls">
+                <input
+                    type="text"
+                    id="searchInput"
+                    name="search"
+                    placeholder="Example: cybersecurity"
+                    autocomplete="off"
+                >
+                <button type="submit" id="searchButton">Search</button>
+            </div>
+        </form>
+
+        <div
+            id="searchMessage"
+            class="m4-message"
+            role="status"
+            aria-live="polite">
+        </div>
+    </section>
+
+    <!-- Controls for switching result/collection panels and layouts -->
+    <section class="m4-toolbar" aria-label="Display controls">
+        <div class="m4-tabs" role="tablist" aria-label="Book content">
+            <button
+                type="button"
+                id="searchTab"
+                class="m4-tab active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="searchPanel">
+                Search Results
+            </button>
+
+            <button
+                type="button"
+                id="collectionTab"
+                class="m4-tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="collectionPanel">
+                Popular Collection
+            </button>
+        </div>
+
+        <div class="m4-view-toggle" aria-label="Layout view">
+            <span>View:</span>
+
+            <button
+                type="button"
+                id="gridViewButton"
+                class="m4-view-button active"
+                aria-pressed="true">
+                Grid
+            </button>
+
+            <button
+                type="button"
+                id="listViewButton"
+                class="m4-view-button"
+                aria-pressed="false">
+                List
+            </button>
+        </div>
+    </section>
+
+    <!-- Search results panel -->
+    <section
+        id="searchPanel"
+        class="m4-panel m4-content-panel"
+        role="tabpanel"
+        aria-labelledby="searchTab">
+
+        <div class="m4-section-heading">
+            <div>
+                <h2>Search Results</h2>
+                <div id="resultSummary" class="m4-summary"></div>
+            </div>
+        </div>
+
+        <div id="searchResults" class="m4-items grid-view"></div>
+
+        <div
+            id="paginationControls"
+            class="m4-pagination"
+            aria-label="Search result pagination">
+        </div>
+
+        <div
+            id="pageIndicator"
+            class="m4-page-indicator"
+            aria-live="polite">
+        </div>
+    </section>
+
+    <!-- Public collection stays independent from search results -->
+    <section
+        id="collectionPanel"
+        class="m4-panel m4-content-panel hidden"
+        role="tabpanel"
+        aria-labelledby="collectionTab">
+
+        <div class="m4-section-heading">
+            <div>
+                <h2>Popular / Bestselling Books</h2>
+                <p>
+                    This public collection is loaded dynamically from the
+                    Open Library Bestsellers subject.
+                </p>
+            </div>
+        </div>
+
+        <div
+            id="collectionMessage"
+            class="m4-message"
+            role="status"
+            aria-live="polite">
+        </div>
+
+        <div id="collectionResults" class="m4-items grid-view"></div>
+    </section>
+
+    <!-- Details-on-demand panel -->
+    <section id="detailsSection" class="m4-panel m4-details-panel">
+        <div class="m4-section-heading">
+            <div>
+                <h2>Selected Book Details</h2>
+                <p>Choose a book from either section to display its details.</p>
+            </div>
+        </div>
+
+        <div
+            id="detailsMessage"
+            class="m4-message m4-info"
+            role="status"
+            aria-live="polite">
+            No book is currently selected.
+        </div>
+
+        <div id="bookDetails"></div>
+    </section>
+</main>
+
+<footer>
+    <p>IT4403 Fall 2026 - J. Hughes</p>
+
+    <p>
+        Please be aware that this is a student website created for course
+        projects in IT 4403.
+    </p>
+
+    <p>
+        Visit the KSU CCSE department of IT website -
+        <a href="https://ccse.kennesaw.edu/it/">here</a>.
+    </p>
+</footer>
+
+
+<!-- ============================================================
+     MUSTACHE TEMPLATES
+     ============================================================ -->
+
+<!-- Search result card template -->
+<script id="search-card-template" type="x-tmpl-mustache">
+{{#books}}
+<article class="m4-book-card" data-work-id="{{workId}}">
+    <div class="m4-cover-wrap">
+        {{#hasCover}}
+        <img
+            class="m4-cover"
+            src="{{coverUrl}}"
+            alt="Cover of {{title}}"
+            loading="lazy">
+        {{/hasCover}}
+
+        {{^hasCover}}
+        <div class="m4-cover m4-cover-placeholder">
+            No cover available
+        </div>
+        {{/hasCover}}
+    </div>
+
+    <div class="m4-book-info">
+        <h3>
+            <button
+                type="button"
+                class="m4-book-title book-select"
+                data-work-id="{{workId}}">
+                {{title}}
+            </button>
+        </h3>
+
+        <p class="m4-card-meta">
+            {{authorText}}
+        </p>
+
+        {{#publishYear}}
+        <p class="m4-card-meta">
+            First published: {{publishYear}}
+        </p>
+        {{/publishYear}}
+
+        <button
+            type="button"
+            class="m4-details-button book-select"
+            data-work-id="{{workId}}">
+            View Details
+        </button>
+    </div>
+</article>
+{{/books}}
+</script>
+
+
+<!-- Public collection card template -->
+<script id="collection-card-template" type="x-tmpl-mustache">
+{{#books}}
+<article class="m4-book-card" data-work-id="{{workId}}">
+    <div class="m4-cover-wrap">
+        {{#hasCover}}
+        <img
+            class="m4-cover"
+            src="{{coverUrl}}"
+            alt="Cover of {{title}}"
+            loading="lazy">
+        {{/hasCover}}
+
+        {{^hasCover}}
+        <div class="m4-cover m4-cover-placeholder">
+            No cover available
+        </div>
+        {{/hasCover}}
+    </div>
+
+    <div class="m4-book-info">
+        <span class="m4-badge">Bestseller Collection</span>
+
+        <h3>
+            <button
+                type="button"
+                class="m4-book-title book-select"
+                data-work-id="{{workId}}">
+                {{title}}
+            </button>
+        </h3>
+
+        <p class="m4-card-meta">{{authorText}}</p>
+
+        {{#publishYear}}
+        <p class="m4-card-meta">
+            First published: {{publishYear}}
+        </p>
+        {{/publishYear}}
+
+        <button
+            type="button"
+            class="m4-details-button book-select"
+            data-work-id="{{workId}}">
+            View Details
+        </button>
+    </div>
+</article>
+{{/books}}
+</script>
+
+
+<!-- Individual details template -->
+<script id="details-template" type="x-tmpl-mustache">
+<article class="m4-detail-card">
+    <div class="m4-detail-cover">
+        {{#hasCover}}
+        <img
+            src="{{coverUrl}}"
+            alt="Cover of {{title}}">
+        {{/hasCover}}
+
+        {{^hasCover}}
+        <div class="m4-cover m4-cover-placeholder m4-large-placeholder">
+            No cover available
+        </div>
+        {{/hasCover}}
+    </div>
+
+    <div class="m4-detail-content">
+        <span class="m4-badge">Open Library Work</span>
+        <h3>{{title}}</h3>
+
+        <dl class="m4-metadata">
+            <div>
+                <dt>Work ID</dt>
+                <dd>{{workId}}</dd>
+            </div>
+
+            <div>
+                <dt>Author(s)</dt>
+                <dd>{{authorText}}</dd>
+            </div>
+
+            <div>
+                <dt>First Published</dt>
+                <dd>{{publishYearText}}</dd>
+            </div>
+
+            <div>
+                <dt>Language</dt>
+                <dd>{{languageText}}</dd>
+            </div>
+
+            <div>
+                <dt>Editions</dt>
+                <dd>{{editionCountText}}</dd>
+            </div>
+        </dl>
+
+        <div class="m4-detail-block">
+            <h4>Description</h4>
+            <p>{{description}}</p>
+        </div>
+
+        <div class="m4-detail-block">
+            <h4>Subjects</h4>
+
+            {{#hasSubjects}}
+            <ul class="m4-subject-list">
+                {{#subjects}}
+                <li>{{.}}</li>
+                {{/subjects}}
+            </ul>
+            {{/hasSubjects}}
+
+            {{^hasSubjects}}
+            <p>No subject information is available.</p>
+            {{/hasSubjects}}
+        </div>
+
+        <a
+            class="m4-external-link"
+            href="{{openLibraryUrl}}"
+            target="_blank"
+            rel="noopener noreferrer">
+            View on Open Library
+        </a>
+    </div>
+</article>
+</script>
+
+</body>
+</html>

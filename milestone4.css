@@ -1,0 +1,481 @@
+/*
+    Milestone 4 - Improved SPA UI
+    Loaded after the existing styles.css.
+
+    This stylesheet is new for Milestone 4 and does not modify Milestone 3.
+*/
+
+:root {
+    --m4-bg: #f5f7fa;
+    --m4-panel: #ffffff;
+    --m4-text: #1d2733;
+    --m4-muted: #66717f;
+    --m4-border: #d8dee6;
+    --m4-primary: #245b8a;
+    --m4-primary-dark: #173f62;
+    --m4-soft: #edf3f8;
+    --m4-success: #176b35;
+    --m4-error: #a71930;
+    --m4-shadow: 0 5px 18px rgba(24, 39, 55, 0.08);
+}
+
+body {
+    background: var(--m4-bg);
+}
+
+.m4-main {
+    width: min(1180px, 94%);
+    margin: 0 auto;
+    padding: 28px 0 48px;
+    color: var(--m4-text);
+}
+
+.m4-hero {
+    background: linear-gradient(135deg, #ffffff, #edf3f8);
+    border: 1px solid var(--m4-border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: var(--m4-shadow);
+}
+
+.m4-hero h2 {
+    margin: 4px 0 8px;
+}
+
+.m4-eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--m4-primary);
+}
+
+.m4-panel {
+    background: var(--m4-panel);
+    border: 1px solid var(--m4-border);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 20px 0;
+    box-shadow: var(--m4-shadow);
+}
+
+.m4-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 16px;
+}
+
+.m4-section-heading h2 {
+    margin: 0 0 4px;
+}
+
+.m4-section-heading p {
+    margin: 0;
+    color: var(--m4-muted);
+}
+
+.m4-search-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.m4-search-controls input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #aeb8c4;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+.m4-search-controls button,
+.m4-details-button,
+.m4-view-button,
+.m4-tab,
+.m4-page-button {
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.m4-search-controls button,
+.m4-details-button {
+    background: var(--m4-primary);
+    color: #ffffff;
+    padding: 10px 16px;
+}
+
+.m4-search-controls button:hover,
+.m4-details-button:hover {
+    background: var(--m4-primary-dark);
+}
+
+.m4-search-controls button:disabled,
+.m4-page-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.m4-message {
+    margin-top: 14px;
+    min-height: 1.5em;
+}
+
+.m4-info {
+    color: var(--m4-muted);
+    font-weight: bold;
+}
+
+.m4-success {
+    color: var(--m4-success);
+    font-weight: bold;
+}
+
+.m4-error {
+    color: var(--m4-error);
+    font-weight: bold;
+}
+
+.m4-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border: 1px solid var(--m4-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: var(--m4-shadow);
+}
+
+.m4-tabs,
+.m4-view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.m4-tab,
+.m4-view-button {
+    padding: 9px 13px;
+    background: #ffffff;
+    color: var(--m4-text);
+    border-color: var(--m4-border);
+}
+
+.m4-tab:hover,
+.m4-view-button:hover {
+    background: var(--m4-soft);
+}
+
+.m4-tab.active,
+.m4-view-button.active {
+    background: var(--m4-primary);
+    color: #ffffff;
+    border-color: var(--m4-primary);
+}
+
+.m4-summary {
+    color: var(--m4-muted);
+    font-weight: bold;
+}
+
+.m4-items.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+}
+
+.m4-items.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.m4-book-card {
+    background: #ffffff;
+    border: 1px solid var(--m4-border);
+    border-radius: 10px;
+    padding: 14px;
+    overflow: hidden;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.grid-view .m4-book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--m4-shadow);
+}
+
+.grid-view .m4-book-card {
+    text-align: center;
+}
+
+.list-view .m4-book-card {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    text-align: left;
+}
+
+.m4-cover-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-view .m4-cover {
+    width: 128px;
+    height: 190px;
+}
+
+.list-view .m4-cover {
+    width: 80px;
+    height: 118px;
+}
+
+.m4-cover {
+    object-fit: cover;
+    border-radius: 5px;
+    background: #edf0f3;
+}
+
+.m4-cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--m4-muted);
+    padding: 10px;
+    text-align: center;
+}
+
+.m4-book-info h3 {
+    margin: 10px 0 6px;
+    font-size: 1rem;
+}
+
+.list-view .m4-book-info h3 {
+    margin-top: 0;
+}
+
+.m4-book-title {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--m4-primary-dark);
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.m4-book-title:hover {
+    text-decoration: underline;
+}
+
+.m4-card-meta {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: var(--m4-muted);
+}
+
+.m4-details-button {
+    margin-top: 10px;
+}
+
+.m4-badge {
+    display: inline-block;
+    background: var(--m4-soft);
+    color: var(--m4-primary-dark);
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.m4-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+}
+
+.m4-page-button {
+    min-width: 38px;
+    padding: 8px 11px;
+    border-color: var(--m4-border);
+    background: #ffffff;
+}
+
+.m4-page-button:hover:not(:disabled) {
+    background: var(--m4-soft);
+}
+
+.m4-page-button.current-page {
+    background: var(--m4-primary);
+    border-color: var(--m4-primary);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.m4-page-indicator {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--m4-muted);
+}
+
+.m4-detail-card {
+    display: grid;
+    grid-template-columns: minmax(160px, 230px) minmax(0, 1fr);
+    gap: 28px;
+    margin-top: 18px;
+}
+
+.m4-detail-cover img {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 7px;
+    box-shadow: var(--m4-shadow);
+}
+
+.m4-large-placeholder {
+    width: 200px;
+    height: 290px;
+}
+
+.m4-detail-content h3 {
+    margin: 10px 0 16px;
+    font-size: 1.65rem;
+}
+
+.m4-metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 0 20px;
+}
+
+.m4-metadata div {
+    background: var(--m4-soft);
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.m4-metadata dt {
+    font-size: 0.78rem;
+    color: var(--m4-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: bold;
+}
+
+.m4-metadata dd {
+    margin: 3px 0 0;
+    font-weight: bold;
+}
+
+.m4-detail-block {
+    margin-top: 18px;
+}
+
+.m4-detail-block h4 {
+    margin-bottom: 6px;
+}
+
+.m4-subject-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    list-style: none;
+    padding: 0;
+}
+
+.m4-subject-list li {
+    background: var(--m4-soft);
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 0.88rem;
+}
+
+.m4-external-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 15px;
+    background: var(--m4-primary);
+    color: #ffffff;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.m4-external-link:hover {
+    background: var(--m4-primary-dark);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    .m4-main {
+        width: min(96%, 1180px);
+    }
+
+    .m4-hero,
+    .m4-panel {
+        padding: 17px;
+    }
+
+    .m4-search-controls {
+        flex-direction: column;
+    }
+
+    .m4-toolbar {
+        align-items: stretch;
+    }
+
+    .m4-tabs,
+    .m4-view-toggle {
+        flex-wrap: wrap;
+    }
+
+    .m4-detail-card {
+        grid-template-columns: 1fr;
+    }
+
+    .m4-detail-cover {
+        text-align: center;
+    }
+
+    .m4-detail-cover img,
+    .m4-large-placeholder {
+        margin: 0 auto;
+    }
+
+    .m4-metadata {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .m4-items.grid-view {
+        grid-template-columns: 1fr;
+    }
+
+    .list-view .m4-book-card {
+        grid-template-columns: 70px minmax(0, 1fr);
+    }
+
+    .list-view .m4-cover {
+        width: 65px;
+        height: 96px;
+    }
+}
