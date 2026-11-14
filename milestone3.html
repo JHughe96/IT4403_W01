@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Milestone 3 - Open Library SPA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="milestone3.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="task6-states.js" defer></script>
+    <script src="task3-pagination.js" defer></script>
+    <script src="task2-search.js" defer></script>
+    <script src="task4-details.js" defer></script>
+    <script src="task5-collection.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Open Library Explorer</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="milestones.html">Milestones</a></li>
+                <li><a href="milestone2.html">Milestone 2</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="m3-main">
+    <h2>Milestone 3: Open Library Single Page Application</h2>
+    <p>Search for books, browse results, view book details, and explore a Science Fiction collection without leaving this page.</p>
+
+    <section id="searchSection" class="m3-section">
+        <h2>Book Search</h2>
+        <p>Search Open Library by title or keyword.</p>
+        <form id="searchForm">
+            <label for="searchInput">Search for books:</label>
+            <div class="search-controls">
+                <input type="text" id="searchInput" name="search" placeholder="Example: data analysis" autocomplete="off">
+                <button type="submit" id="searchButton">Search</button>
+            </div>
+        </form>
+        <div id="searchMessage" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="resultsSection" class="m3-section">
+        <h2>Search Results</h2>
+        <div id="resultSummary" class="m3-summary"></div>
+        <div id="searchResults" class="book-grid"></div>
+        <div id="paginationControls" class="m3-pagination" aria-label="Search result pagination"></div>
+        <div id="pageIndicator" class="m3-page-indicator" aria-live="polite"></div>
+    </section>
+
+    <section id="detailsSection" class="m3-section">
+        <h2>Selected Book Details</h2>
+        <div id="detailsMessage" class="message" role="status" aria-live="polite">Select a book from the search results or collection to view details.</div>
+        <div id="bookDetails" class="m3-details hidden">
+            <div id="detailCover" class="m3-detail-cover"></div>
+            <div class="m3-detail-content">
+                <h3 id="detailTitle"></h3>
+                <p><strong>Work ID:</strong> <span id="detailWorkId"></span></p>
+                <p><strong>Author(s):</strong> <span id="detailAuthors"></span></p>
+                <h4>Description</h4>
+                <p id="detailDescription"></p>
+                <h4>Subjects</h4>
+                <ul id="detailSubjects"></ul>
+                <p><a id="openLibraryLink" class="button-link" href="#" target="_blank" rel="noopener noreferrer">View on Open Library</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="collectionSection" class="m3-section">
+        <h2>Science Fiction Collection</h2>
+        <p>This collection is loaded dynamically from the Open Library Science Fiction subject.</p>
+        <div id="collectionMessage" class="message" role="status" aria-live="polite"></div>
+        <div id="collectionResults" class="book-grid"></div>
+    </section>
+</main>
+
+<footer>
+    <p>IT4403 Fall 2026 - J. Hughes</p>
+    <p>Please be aware that this is a student website created for course projects in IT 4403</p>
+    <p>Visit the KSU CCSE department of IT website - <a href="https://ccse.kennesaw.edu/it/">here</a>.</p>
+</footer>
+</body>
+</html>
